@@ -13,7 +13,7 @@
   <link rel="icon" type="image/png" sizes="512x512" href="/icon-512x512.png"/>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
   <script>if('serviceWorker' in navigator){navigator.serviceWorker.register('/sw.js')}</script>
-  <script>try{if(!localStorage.getItem('gam-v12')){localStorage.removeItem('gam-cache');localStorage.removeItem('gam-source');localStorage.setItem('gam-v12','1');}}catch(e){}</script>
+  <script>try{if(!localStorage.getItem('gam-v13')){localStorage.removeItem('gam-cache');localStorage.removeItem('gam-source');localStorage.setItem('gam-v13','1');}}catch(e){}</script>
   <style>
     *{box-sizing:border-box;margin:0;padding:0}html,body{min-height:100vh;min-height:100dvh;background:#0D1117}
     body{font-family:'Outfit',-apple-system,sans-serif;color:#E4E4E7;-webkit-font-smoothing:antialiased}
@@ -35,7 +35,7 @@
 const {useState,useEffect,useCallback}=React;
 const h=React.createElement;
 
-const APPS_SCRIPT_URL="https://script.google.com/macros/s/AKfycbyLb5IW5jFfhV7tQoJpKNF767YrtDLdDaBobKLdZP_weppExR9UYCc8AG-mnXYyPzHLAQ/exec";
+const APPS_SCRIPT_URL="https://script.google.com/macros/s/AKfycbytQLXEUpsywXsZufM6PUoG42XEQ8gPzxvOCgoLnZYONjsjJk50xXOA3-nMJn1b8CJZFA/exec";
 const AUTO_SYNC_MS=2*60*1000;
 const SS=["Tools","Checklist & Technique","Pre/Post","Pearls","Case Log"];
 const SI={"Tools":"🔧","Checklist & Technique":"📋","Pre/Post":"📝","Pearls":"💡","Case Log":"📚"};
