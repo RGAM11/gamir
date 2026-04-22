@@ -13,7 +13,7 @@
   <link rel="icon" type="image/png" sizes="512x512" href="/icon-512x512.png"/>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
   <script>if('serviceWorker' in navigator){navigator.serviceWorker.register('/sw.js')}</script>
-  <script>try{if(!localStorage.getItem('gam-v14')){localStorage.removeItem('gam-cache');localStorage.removeItem('gam-source');localStorage.setItem('gam-v14','1');}}catch(e){}</script>
+  <script>try{if(!localStorage.getItem('gam-v15')){localStorage.removeItem('gam-cache');localStorage.removeItem('gam-source');localStorage.setItem('gam-v15','1');}}catch(e){}</script>
   <style>
     *{box-sizing:border-box;margin:0;padding:0}html,body{min-height:100vh;min-height:100dvh;background:#0D1117}
     body{font-family:'Outfit',-apple-system,sans-serif;color:#E4E4E7;-webkit-font-smoothing:antialiased}
@@ -57,11 +57,11 @@ function I({n,s=22,w=1.8}){
 function ContentBlock({items}){
   if(!items?.length)return h("div",{style:{padding:"20px 16px",color:"#555",fontSize:13,fontStyle:"italic",textAlign:"center"}},"No content yet");
   return h("div",{className:"gc",style:{display:"flex",flexDirection:"column",gap:0}},items.map((item,i)=>{
+    if(item.type==="divider")return h("div",{key:i,style:{height:1,background:"linear-gradient(90deg,transparent,#2a3040,transparent)",margin:"12px 0"}});
     if(item.type==="image")return h("div",{key:i,style:{margin:"6px 0",borderRadius:8,overflow:"hidden",border:"1px solid #2a2a2a"}},h("img",{src:item.content,alt:"",style:{width:"100%",height:"auto",display:"block"},onError:ev=>{ev.target.parentElement.style.display="none"}}));
     if(item.type==="table")return h("div",{key:i,style:{margin:"4px 0",overflowX:"auto",borderRadius:8,border:"1px solid #2a2a2a"}},h("table",{style:{width:"100%",borderCollapse:"collapse",fontSize:12}},h("tbody",null,item.content.map((row,r)=>h("tr",{key:r,style:{background:r===0?"#1a2332":"transparent"}},row.map((cell,c)=>h("td",{key:c,style:{padding:"4px 8px",borderBottom:"1px solid #222",fontWeight:r===0?600:400,color:r===0?"#7EB8E0":"#ccc"}},cell)))))));
     const indent=item.indent||0;
     const colors=["#D4D4D8","#bbb","#aaa","#999","#888"];
-    // Check if this is a heading-style item (large font size or bold-only paragraph with no indent)
     const isHeading=item.isHeading||false;
     const marginTop=isHeading?14:(item.hasSpaceBefore?10:1);
     return h("div",{key:i,style:{fontSize:isHeading?16:13,fontWeight:isHeading?700:"inherit",lineHeight:isHeading?1.3:1.4,color:isHeading?"#E4E4E7":colors[Math.min(indent,4)],paddingTop:marginTop,paddingBottom:isHeading?4:1,paddingLeft:indent*20},dangerouslySetInnerHTML:item.html?{__html:item.html}:undefined},item.html?undefined:item.content);
